@@ -1,0 +1,48 @@
+
+<section class='register'>
+<h2>Register!
+<?php
+	if ($this->error) : ?>
+	<p class='error'>Error, please correct your submission!</p>
+<?php endif ?>
+</h2>
+<?php
+// ddd($this->test);
+$form=$this->form;
+$form->prepare();
+// d($this->url(NULL, array('controller'=>'login', 'action'=>'process')));
+$form->setAttribute('action', $this->url(NULL, array('controller'=>'Register', 'action'=>'process')));
+$form->setAttribute('method', 'post');
+echo $this->form()->openTag($form);
+?>
+<dl class='zend-form'>
+<dt><?php echo $this->formLabel($form->get('name')); ?></dt>
+<dd><?php
+	echo $this->formElement($form->get('name'));
+	echo $this->formElementErrors($form->get('name'));
+?></dd>
+<dt><?php echo $this->formLabel($form->get('email')); ?></dt>
+<dd><?php
+	echo $this->formElement($form->get('email'));
+	echo $this->formElementErrors($form->get('email'));
+?></dd>
+<dt><?php echo $this->formLabel($form->get('password')); ?></dt>
+<dd><?php
+	echo $this->formElement($form->get('password'));
+	echo $this->formElementErrors($form->get('password'));
+?></dd>
+<dd></dd>
+<dt><?php echo $this->formLabel($form->get('confirm')); ?></dt>
+<dd><?php
+	echo $this->formElement($form->get('confirm'));
+	echo $this->formElementErrors($form->get('confirm'));
+?></dd>
+<dd><?php
+	echo $this->formElement($form->get('submit'));
+	echo $this->formElementErrors($form->get('submit'));
+	?>
+</dd>
+<?php echo $this->form()->closeTag($form); ?>
+</dl>
+</section>
+<a href="/users/index/login">Login</a> | <a href="/users/index/register">New User Registration</a>

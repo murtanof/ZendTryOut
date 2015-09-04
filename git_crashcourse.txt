@@ -1,0 +1,91 @@
+git clone <URL> <local dir>
+# make a git working local copy  
+
+git init
+# Initialize local dir
+
+git add .
+# Adds the files in the local repository and stages them for commit. To unstage a file, use 'git reset HEAD YOUR-FILE'.
+
+git rm -r --cached <file/dir>
+#remove the file from git repositories, -r is used to remove all file in given folder
+
+git commit -m 'First commit'
+# Commits the tracked changes and prepares them to be pushed to a remote repository. 
+# To remove this commit and modify the file, use 'git reset --soft HEAD~1' and commit and add the file again.
+
+git commit -m "Refactor to simplify" -a
+# commits all changes
+
+git commit -m "Refactor to simplify" some-file
+# commits change to only some-file file
+
+If you know you want to use git reset, it still depends what you mean by "uncommit". If all you want to do is undo the act of committing, leaving everything else intact, use:
+
+git reset --soft HEAD^
+If you want to undo the act of committing and everything you'd staged, but leave the work tree (your files intact):
+
+git reset HEAD^
+And if you actually want to completely undo it, throwing away all uncommitted changes, resetting everything to the previous commit (as the original question asked):
+
+git reset --hard HEAD^
+
+git push origin master
+# Pushes the changes in your local repository up to the remote repository you specified as the origin (with the default branch master!)
+
+git remote add origin \remote repository URL\
+# Sets the new remote
+
+git remote -v
+# Verifies the new remote URL
+
+git clone /path/to/repository
+
+
+git clone username@host:/path/to/repository
+
+
+git pull <remote>
+#Fetch the specified remote’s copy of the current branch and immediately merge it into the local copy. 
+#This is the same as git fetch <remote> followed by git merge origin/<current-branch>.
+
+Create the branch on your local machine and switch in this branch :
+$ git checkout -b [name_of_your_new_branch]
+
+
+Push the branch on github :
+$ git push origin [name_of_your_new_branch]
+When you want to commit something in your branch, be sure to be in your branch.
+
+You can see all branches created by using :
+
+$ git branch
+Which will show :
+
+* approval_messages
+  master
+  master_clean
+Add a new remote for your branch :
+
+$ git remote add [name_of_your_remote] 
+Push changes from your commit into your branch :
+
+$ git push origin [name_of_your_remote]
+Update your branch when the original branch from official repository has been updated :
+
+$ git fetch [name_of_your_remote]
+Then you need to apply to merge changes, if your branch is derivated from develop you need to do :
+
+$ git merge [name_of_your_remote]/develop
+Delete a branch on your local filesystem :
+
+$ git branch -d [name_of_your_new_branch]
+To force the deletion of local branch on your filesystem :
+
+$ git branch -D [name_of_your_new_branch]git branch 
+Delete the branch on github :
+
+$ git push origin :[name_of_your_new_branch]
+
+git pull <remote name> <branch name or master if omitted>
+# update working local directory recent with what is in the remote

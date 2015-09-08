@@ -89,3 +89,9 @@ $ git push origin :[name_of_your_new_branch]
 
 git pull <remote name> <branch name or master if omitted>
 # update working local directory recent with what is in the remote
+
+git update-index --assume-unchanged path/to/file
+#This will tell git you want to start ignoring the changes to the file
+
+git update-index --no-assume-unchanged path/to/file
+#When you want to start keeping track again
